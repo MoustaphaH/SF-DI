@@ -1,7 +1,6 @@
 package mdev.springframework.SFDI.Controllers;
 
 import mdev.springframework.SFDI.Services.GreetingService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 
@@ -13,7 +12,7 @@ public class ConstructorInjectedController {
     public ConstructorInjectedController(@Qualifier("constructorGreetingService") GreetingService greetingService) {
         this.greetingService = greetingService;
     }
-    public String getGreeting(){
+    public String sayHello(){
         return greetingService.sayGreeting();
     }
 }

@@ -1,21 +1,23 @@
 package mdev.springframework.SFDI.Controllers;
 
-import mdev.springframework.SFDI.Services.ConstructorGreetingService;
+import mdev.springframework.SFDI.Services.GreetingServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 class PropertyInjectedControllerTest {
 
-    PropertyInjectedController controller;
+    private PropertyInjectedController propertyInjectedController;
 
     @BeforeEach
-    void setUp(){
-        controller = new PropertyInjectedController();
-        controller.greetingService = new ConstructorGreetingService();
+    void setUp() throws Exception{
+        this.propertyInjectedController = new PropertyInjectedController();
+        this.propertyInjectedController.greetingServiceImpl = new GreetingServiceImpl();
     }
 
     @Test
-    void getGreeting() {
-        System.out.println(controller.getGreeting());
+    public void testGreeting() throws Exception{
+        assertEquals(GreetingServiceImpl.HELLO_MDEV, propertyInjectedController.sayHello());
     }
 }
